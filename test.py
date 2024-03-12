@@ -44,6 +44,12 @@ def getZIP():
     for intento in range(3):  # Realizar hasta 3 intentos
         try:
             # Establecer la conexión con el servidor y configurar el tiempo de espera
+            proxy_host = '45.225.207.186'
+            proxy_port = 999  # Reemplazar con el puerto de tu proxy
+            proxy_timeout = 1000  # Tiempo de espera en segundos
+
+            # Establecer la conexión con el servidor utilizando el proxy y el timeout
+            conn = http.client.HTTPSConnection(proxy_host, proxy_port, timeout=proxy_timeout)
             conn = http.client.HTTPSConnection(host, timeout=1000)  # Tiempo de espera de 10 segundos
             # Realizar la solicitud GET
             conn.request("GET", path, headers=headers)
