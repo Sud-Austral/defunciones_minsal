@@ -57,7 +57,7 @@ def getZIP():
 
         except requests.RequestException as e:
             print("Error durante la solicitud:", e)
-    #return fechaActual
+    return fechaActual
 
 
         
