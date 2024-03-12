@@ -27,10 +27,18 @@ def getZIP():
 
     # Configurar el tiempo de espera
     timeout = 1000  # Tiempo de espera en segundos
+    # Realizar la solicitud GET con timeout
+    proxy_host = '45.225.207.186'
+    proxy_port = 999  # Reemplazar con el puerto de tu proxy
+    proxy = {
+        'http': f'http://{proxy_host}:{proxy_port}',
+        'https': f'http://{proxy_host}:{proxy_port}'
+    }
 
     try:
+        
         # Realizar la solicitud GET con timeout
-        response = requests.get(f"https://{host}{path}", headers=headers, timeout=timeout)
+        response = requests.get(f"https://{host}{path}", headers=headers, timeout=timeout,proxies=proxy)
 
         # Verificar el código de estado de la respuesta
         if response.status_code == 200:
