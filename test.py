@@ -85,8 +85,8 @@ if __name__ == '__main__':
         if os.path.exists(file):
             # Borra el archivo
             os.remove(archivo_a_borrar)
-            print(f"El archivo '{archivo_a_borrar}' ha sido borrado exitosamente.")
+            print(f"El archivo '{file}' ha sido borrado exitosamente.")
         else:
-            print(f"El archivo '{archivo_a_borrar}' no existe.")
+            print(f"El archivo '{file}' no existe.")
 
     df.to_excel("difuntos.xlsx",index=False)
