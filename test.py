@@ -27,7 +27,7 @@ def getZIP():
     }
 
     # Configurar el tiempo de espera
-    timeout = 1000  # Tiempo de espera en segundos
+    timeout = 10000  # Tiempo de espera en segundos
     # Realizar la solicitud GET con timeout
     proxy_host = '45.225.207.186'
     proxy_port = 999  # Reemplazar con el puerto de tu proxy
@@ -36,24 +36,25 @@ def getZIP():
         'https': f'http://{proxy_host}:{proxy_port}'
     }
 
-    try:
-        
-        # Realizar la solicitud GET con timeout
-        response = requests.get(f"https://{host}{path}", headers=headers, timeout=timeout,proxies=proxy)
+    for _ in range(30):
+        try:
+            # Realizar la solicitud GET con timeout
+            response = requests.get(f"https://{host}{path}", headers=headers, timeout=timeout, proxies=proxy)
 
-        # Verificar el código de estado de la respuesta
-        if response.status_code == 200:
-            with open("descarga.zip", "wb") as f:
-                f.write(response.content)
-            print("Archivo descargado exitosamente.")
-        else:
-            print("Error al descargar el archivo:", response.status_code)
+            # Verificar el código de estado de la respuesta
+            if response.status_code == 200:
+                with open("descarga.zip", "wb") as f:
+                    f.write(response.content)
+                print("Archivo descargado exitosamente.")
+                break  # Si la descarga es exitosa, sal del bucle
+            else:
+                print("Error al descargar el archivo:", response.status_code)
 
-    except requests.Timeout:
-        print("Se ha agotado el tiempo de espera durante la solicitud.")
+        except requests.Timeout:
+            print("Se ha agotado el tiempo de espera durante la solicitud.")
 
-    except requests.RequestException as e:
-        print("Error durante la solicitud:", e)
+        except requests.RequestException as e:
+            print("Error durante la solicitud:", e)
 
 
         
