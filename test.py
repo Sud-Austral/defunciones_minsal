@@ -3,6 +3,7 @@ import http.client
 import zipfile
 import time
 import requests
+import os
 
 def getZIP():
     # Definir los parámetros de la solicitud
@@ -65,10 +66,11 @@ def descomprimir():
         contenidos = zip_ref.namelist()
         # Extrae todos los archivos del ZIP en la carpeta actual
         zip_ref.extractall()
+        return contenidos
 
 if __name__ == '__main__':
     getZIP()
-    descomprimir()
+    contenidos = descomprimir()
     df = pd.read_csv("DEFUNCIONES_FUENTE_DEIS_2021_2024_12032024.csv", encoding='latin-1',sep=";", header=None)
     df.columns = ['Año', 'Fecha', 'Sexo', 'Frecuencia', 'Edad', 'Codcom', 'Comuna',
        'Región', 'ID_DP', 'ID_Nivel 1', 'Nivel 1', 'ID_Nivel 2', 'Nivel 2',
@@ -78,4 +80,13 @@ if __name__ == '__main__':
        'ID_CEXTDETALLE', 'Causas externas de morbilidad y de mortalidad',
        'ID_CEXTDETALLEint',
        'Causas externas de morbilidad y de mortalidad INT', 'Lugar']
+    for file in contenidos:
+        print(file)
+        if os.path.exists(file):
+            # Borra el archivo
+            os.remove(archivo_a_borrar)
+            print(f"El archivo '{archivo_a_borrar}' ha sido borrado exitosamente.")
+        else:
+            print(f"El archivo '{archivo_a_borrar}' no existe.")
+
     df.to_excel("difuntos.xlsx",index=False)
