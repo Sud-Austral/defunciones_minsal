@@ -26,7 +26,7 @@ def getZIP():
     }
 
     # Configurar el tiempo de espera
-    timeout = 100  # Tiempo de espera en segundos
+    timeout = 1000  # Tiempo de espera en segundos
 
     try:
         # Realizar la solicitud GET con timeout
@@ -34,7 +34,7 @@ def getZIP():
 
         # Verificar el código de estado de la respuesta
         if response.status_code == 200:
-            with open("descarga4.zip", "wb") as f:
+            with open("descarga.zip", "wb") as f:
                 f.write(response.content)
             print("Archivo descargado exitosamente.")
         else:
