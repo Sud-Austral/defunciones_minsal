@@ -1,6 +1,7 @@
 import pandas as pd
 import http.client
 import zipfile
+import time
 
 def getZIP():
     # Definir los parámetros de la solicitud
@@ -23,6 +24,7 @@ def getZIP():
         "Pragma": "no-cache",
         "Cache-Control": "no-cache"
     }
+    """
     # Establecer la conexión con el servidor
     conn = http.client.HTTPSConnection(host, timeout=1000)
     # Realizar la solicitud GET
@@ -34,11 +36,47 @@ def getZIP():
         with open("descarga.zip", "wb") as f:
             f.write(response.read())
         print("Archivo descargado exitosamente.")
-    else:
-        print("Error al descargar el archivo:", response.status)
+    #else:
+    #    print("Error al descargar el archivo:", response.status)
     # Cerrar la conexión
-    conn.close()
+    #conn.close()
+    """
+    for intento in range(3):  # Realizar hasta 3 intentos
+        try:
+            # Establecer la conexión con el servidor y configurar el tiempo de espera
+            conn = http.client.HTTPSConnection(host, timeout=1000)  # Tiempo de espera de 10 segundos
+            # Realizar la solicitud GET
+            conn.request("GET", path, headers=headers)
+            # Obtener la respuesta
+            response = conn.getresponse()
+            # Leer el contenido de la respuesta, manejarla como sea necesario
+            if response.status == 200:
+                with open("descarga.zip", "wb") as f:
+                    f.write(response.read())
+                print("Archivo descargado exitosamente.")
+            else:
+                print("Error al descargar el archivo:", response.status)
+            # Cerrar la conexión
+            conn.close()
+            # Si la conexión y la solicitud tienen éxito, salir del bucle de intentos
+            break
 
+        except TimeoutError:
+            # Si ocurre un error de tiempo de espera, esperar unos segundos antes de volver a intentarlo
+            print("Tiempo de espera agotado. Reintentando conexión...")
+            print(TimeoutError)
+            time.sleep(5)  # Esperar 5 segundos antes de volver a intentarlo
+            continue
+
+        except Exception as e:
+            print("Error:", e)
+            break
+
+    else:
+        print("Se superó el número máximo de intentos. No se pudo establecer la conexión.")
+
+
+        
 def descomprimir():
     # Ruta del archivo ZIP
     archivo_zip = "descarga.zip"
