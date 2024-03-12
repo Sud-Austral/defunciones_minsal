@@ -23,16 +23,12 @@ def getZIP():
         "Pragma": "no-cache",
         "Cache-Control": "no-cache"
     }
-
     # Establecer la conexión con el servidor
-    conn = http.client.HTTPSConnection(host)
-
+    conn = http.client.HTTPSConnection(host, timeout=1000)
     # Realizar la solicitud GET
     conn.request("GET", path, headers=headers)
-
     # Obtener la respuesta
     response = conn.getresponse()
-
     # Leer el contenido de la respuesta
     if response.status == 200:
         with open("descarga.zip", "wb") as f:
@@ -40,23 +36,18 @@ def getZIP():
         print("Archivo descargado exitosamente.")
     else:
         print("Error al descargar el archivo:", response.status)
-
     # Cerrar la conexión
     conn.close()
 
 def descomprimir():
     # Ruta del archivo ZIP
     archivo_zip = "descarga.zip"
-
     # Abre el archivo ZIP en modo lectura
     with zipfile.ZipFile(archivo_zip, 'r') as zip_ref:
         # Lista los contenidos del archivo ZIP
         contenidos = zip_ref.namelist()
-
         # Extrae todos los archivos del ZIP en la carpeta actual
         zip_ref.extractall()
-
-
 
 if __name__ == '__main__':
     getZIP()
