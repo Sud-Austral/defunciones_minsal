@@ -84,7 +84,7 @@ if __name__ == '__main__':
         print(file)
         if os.path.exists(file):
             # Borra el archivo
-            os.remove(archivo_a_borrar)
+            os.remove(file)
             print(f"El archivo '{file}' ha sido borrado exitosamente.")
         else:
             print(f"El archivo '{file}' no existe.")
