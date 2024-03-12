@@ -4,11 +4,13 @@ import zipfile
 import time
 import requests
 import os
+import datetime
 
 def getZIP():
+    fechaActual = datetime.datetime.now().strftime("%d%m%Y")
     # Definir los parámetros de la solicitud
     host = "repositoriodeis.minsal.cl"
-    path = "/DatosAbiertos/VITALES/DEFUNCIONES_FUENTE_DEIS_2021_2024_12032024.zip"
+    path = f"/DatosAbiertos/VITALES/DEFUNCIONES_FUENTE_DEIS_2021_2024_{fechaActual}.zip"
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0"
     headers = {
         "User-Agent": user_agent,
@@ -55,6 +57,7 @@ def getZIP():
 
         except requests.RequestException as e:
             print("Error durante la solicitud:", e)
+    #return fechaActual
 
 
         
@@ -70,9 +73,9 @@ def descomprimir():
         return contenidos
 
 if __name__ == '__main__':
-    getZIP()
+    fechaActual = getZIP()
     contenidos = descomprimir()
-    df = pd.read_csv("DEFUNCIONES_FUENTE_DEIS_2021_2024_12032024.csv", encoding='latin-1',sep=";", header=None)
+    df = pd.read_csv(f"DEFUNCIONES_FUENTE_DEIS_2021_2024_{fechaActual}.csv", encoding='latin-1',sep=";", header=None)
     df.columns = ['Año', 'Fecha', 'Sexo', 'Frecuencia', 'Edad', 'Codcom', 'Comuna',
        'Región', 'ID_DP', 'ID_Nivel 1', 'Nivel 1', 'ID_Nivel 2', 'Nivel 2',
        'ID_Nivel 3', ' Diagnóstico Principal', 'ID_DP1',
