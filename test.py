@@ -62,4 +62,12 @@ if __name__ == '__main__':
     getZIP()
     descomprimir()
     df = pd.read_csv("DEFUNCIONES_FUENTE_DEIS_2021_2024_12032024.csv", encoding='latin-1',sep=";", header=None)
+    df.columns = ['Año', 'Fecha', 'Sexo', 'Frecuencia', 'Edad', 'Codcom', 'Comuna',
+       'Región', 'ID_DP', 'ID_Nivel 1', 'Nivel 1', 'ID_Nivel 2', 'Nivel 2',
+       'ID_Nivel 3', ' Diagnóstico Principal', 'ID_DP1',
+       ' Diagnóstico Principal INT', 'ID_OTRO', 'ID_CEXT (S-N)',
+       'Causas externas (S-N)', 'ID_CEXTGRAL', 'Causas externas Gral',
+       'ID_CEXTDETALLE', 'Causas externas de morbilidad y de mortalidad',
+       'ID_CEXTDETALLEint',
+       'Causas externas de morbilidad y de mortalidad INT', 'Lugar']
     df.to_excel("difuntos.xlsx",index=False)
