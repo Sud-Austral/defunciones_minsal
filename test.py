@@ -56,13 +56,10 @@ def getZIP():
                 break  # Si la descarga es exitosa, sal del bucle
             else:
                 print("Error al descargar el archivo:", response.status_code)
-
         except requests.Timeout:
             print("Se ha agotado el tiempo de espera durante la solicitud.")
-
         except requests.RequestException as e:
             print("Error durante la solicitud:", e)
-
     if flag:
         log.loc[len(log)] = {"fecha":datetime.datetime.now(),"descarga":"No Descargado"}
     log.to_excel("log_descarga.xlsx", index=False)
@@ -85,22 +82,25 @@ if __name__ == '__main__':
     
     fechaActual = getZIP()
     contenidos = descomprimir()
-    df = pd.read_csv(f"DEFUNCIONES_FUENTE_DEIS_2021_2024_{fechaActual}.csv", encoding='latin-1',sep=";", header=None)
-    df.columns = ['Año', 'Fecha', 'Sexo', 'Frecuencia', 'Edad', 'Codcom', 'Comuna',
-       'Región', 'ID_DP', 'ID_Nivel 1', 'Nivel 1', 'ID_Nivel 2', 'Nivel 2',
-       'ID_Nivel 3', ' Diagnóstico Principal', 'ID_DP1',
-       ' Diagnóstico Principal INT', 'ID_OTRO', 'ID_CEXT (S-N)',
-       'Causas externas (S-N)', 'ID_CEXTGRAL', 'Causas externas Gral',
-       'ID_CEXTDETALLE', 'Causas externas de morbilidad y de mortalidad',
-       'ID_CEXTDETALLEint',
-       'Causas externas de morbilidad y de mortalidad INT', 'Lugar']
-    for file in contenidos:
-        print(file)
-        if os.path.exists(file):
-            # Borra el archivo
-            os.remove(file)
-            print(f"El archivo '{file}' ha sido borrado exitosamente.")
-        else:
-            print(f"El archivo '{file}' no existe.")
-    df = df[df["Año"] == 2024]
-    df.to_excel("difuntos.xlsx",index=False)
+    try:
+        df = pd.read_csv(f"DEFUNCIONES_FUENTE_DEIS_2021_2024_{fechaActual}.csv", encoding='latin-1',sep=";", header=None)
+        df.columns = ['Año', 'Fecha', 'Sexo', 'Frecuencia', 'Edad', 'Codcom', 'Comuna',
+            'Región', 'ID_DP', 'ID_Nivel 1', 'Nivel 1', 'ID_Nivel 2', 'Nivel 2',
+            'ID_Nivel 3', ' Diagnóstico Principal', 'ID_DP1',
+            ' Diagnóstico Principal INT', 'ID_OTRO', 'ID_CEXT (S-N)',
+            'Causas externas (S-N)', 'ID_CEXTGRAL', 'Causas externas Gral',
+            'ID_CEXTDETALLE', 'Causas externas de morbilidad y de mortalidad',
+            'ID_CEXTDETALLEint',
+            'Causas externas de morbilidad y de mortalidad INT', 'Lugar']
+        for file in contenidos:
+            print(file)
+            if os.path.exists(file):
+                # Borra el archivo
+                os.remove(file)
+                print(f"El archivo '{file}' ha sido borrado exitosamente.")
+            else:
+                print(f"El archivo '{file}' no existe.")
+        df = df[df["Año"] == 2024]
+        df.to_excel("difuntos.xlsx",index=False)
+    except:
+        print("Error de archivo")
