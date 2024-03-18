@@ -11,6 +11,7 @@ def getZIP():
     # Definir los parámetros de la solicitud
     host = "repositoriodeis.minsal.cl"
     path = f"/DatosAbiertos/VITALES/DEFUNCIONES_FUENTE_DEIS_2021_2024_{fechaActual}.zip"
+    #path = f"/DatosAbiertos/VITALES/DEFUNCIONES_FUENTE_DEIS_2021_2024_12032024.zip"
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0"
     headers = {
         "User-Agent": user_agent,
