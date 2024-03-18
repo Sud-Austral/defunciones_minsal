@@ -7,6 +7,7 @@ import os
 import datetime
 
 def getZIP():
+    log = df.read_excel("log_descarga.xlsx")
     fechaActual = datetime.datetime.now().strftime("%d%m%Y")
     # Definir los parámetros de la solicitud
     host = "repositoriodeis.minsal.cl"
@@ -38,7 +39,7 @@ def getZIP():
         'http': f'http://{proxy_host}:{proxy_port}',
         'https': f'http://{proxy_host}:{proxy_port}'
     }
-
+    flag = True
     for _ in range(30):
         try:
             # Realizar la solicitud GET con timeout
@@ -48,6 +49,8 @@ def getZIP():
             if response.status_code == 200:
                 with open("descarga.zip", "wb") as f:
                     f.write(response.content)
+                log.loc[len(log)] = {"fecha":datetime.datetime.now(),"descarga":"Descargado"}
+                flag = False
                 print("Archivo descargado exitosamente.")
                 break  # Si la descarga es exitosa, sal del bucle
             else:
@@ -58,6 +61,9 @@ def getZIP():
 
         except requests.RequestException as e:
             print("Error durante la solicitud:", e)
+
+    if flag:
+        log.loc[len(log)] = {"fecha":datetime.datetime.now(),"descarga":"No Descargado"}
     return fechaActual
 
 
@@ -74,6 +80,7 @@ def descomprimir():
         return contenidos
 
 if __name__ == '__main__':
+    
     fechaActual = getZIP()
     contenidos = descomprimir()
     df = pd.read_csv(f"DEFUNCIONES_FUENTE_DEIS_2021_2024_{fechaActual}.csv", encoding='latin-1',sep=";", header=None)
