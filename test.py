@@ -7,7 +7,7 @@ import os
 import datetime
 
 def getZIP():
-    log = df.read_excel("log_descarga.xlsx")
+    log = pd.read_excel("log_descarga.xlsx")
     fechaActual = datetime.datetime.now().strftime("%d%m%Y")
     # Definir los parámetros de la solicitud
     host = "repositoriodeis.minsal.cl"
@@ -64,6 +64,7 @@ def getZIP():
 
     if flag:
         log.loc[len(log)] = {"fecha":datetime.datetime.now(),"descarga":"No Descargado"}
+    log.to_excel("log_descarga.xlsx", index=False)
     return fechaActual
 
 
