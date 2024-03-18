@@ -43,7 +43,8 @@ def getZIP():
     for _ in range(30):
         try:
             # Realizar la solicitud GET con timeout
-            response = requests.get(f"https://{host}{path}", headers=headers, timeout=timeout, proxies=proxy)
+            #response = requests.get(f"https://{host}{path}", headers=headers, timeout=timeout, proxies=proxy)
+            response = requests.get(f"https://{host}{path}", headers=headers, timeout=timeout)
 
             # Verificar el código de estado de la respuesta
             if response.status_code == 200:
