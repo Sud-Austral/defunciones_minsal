@@ -93,5 +93,5 @@ if __name__ == '__main__':
             print(f"El archivo '{file}' ha sido borrado exitosamente.")
         else:
             print(f"El archivo '{file}' no existe.")
-
+    df = df[df["Año"] == 2024]
     df.to_excel("difuntos.xlsx",index=False)
