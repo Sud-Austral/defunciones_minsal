@@ -102,5 +102,6 @@ if __name__ == '__main__':
                 print(f"El archivo '{file}' no existe.")
         df = df[df["Año"] == 2024]
         df.to_excel("difuntos.xlsx",index=False)
+        print("Termino correctamente")
     except:
         print("Error de archivo")
