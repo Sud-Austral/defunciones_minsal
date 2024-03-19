@@ -7,9 +7,12 @@ from selenium.webdriver.firefox.options import Options
 if __name__ == '__main__':
     print("Termino")
     url = "https://repositoriodeis.minsal.cl/DatosAbiertos/VITALES/DEFUNCIONES_FUENTE_DEIS_2021_2024_19032024.zip"
-
+    download_path = '/ruta' 
     options = Options()
     options.add_argument('-headless')
+    options.set_preference('browser.download.dir', download_path)
+    options.set_preference('browser.download.folderList', 2)  # Configurar para que use la carpeta personalizada
+    options.set_preference('browser.helperApps.neverAsk.saveToDisk', 'application/octet-stream')  # Evitar diálogos de descarga
 
     # Iniciar el navegador Firefox
     driver = webdriver.Firefox(options=options)
