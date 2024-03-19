@@ -92,6 +92,7 @@ if __name__ == '__main__':
             'ID_CEXTDETALLE', 'Causas externas de morbilidad y de mortalidad',
             'ID_CEXTDETALLEint',
             'Causas externas de morbilidad y de mortalidad INT', 'Lugar']
+            
         for file in contenidos:
             print(file)
             if os.path.exists(file):
