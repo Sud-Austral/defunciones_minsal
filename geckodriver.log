@@ -1511,3 +1511,20 @@ DevTools listening on ws://127.0.0.1:38459/devtools/browser/7ceb310b-4623-451d-a
 console.error: "update.locale" " file doesn't exist in either the application or GRE directories"
 1714349968956	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
 1714350120110	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1714392476821	geckodriver	INFO	Listening on 127.0.0.1:49249
+1714392477416	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... ss" "--remote-debugging-port" "58453" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileNGdtyB"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: Unable to open a connection to the X server
+1714392482867	Marionette	INFO	Marionette enabled
+1714392483847	Marionette	INFO	Listening on port 44767
+Read port: 44767
+WebDriver BiDi listening on ws://127.0.0.1:58453
+1714392484052	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:58453/devtools/browser/31924c0c-47c6-45ae-8d0a-a45ce3f84636
+console.error: "update.locale" " file doesn't exist in either the application or GRE directories"
+1714392513081	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1714392667787	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
