@@ -3039,3 +3039,18 @@ Read port: 35837
 console.error: ({})
 DevTools listening on ws://127.0.0.1:36951/devtools/browser/fa2a2cf3-d126-44f0-ad8f-108bf4bddeea
 1718237999143	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1718280487953	geckodriver	INFO	Listening on 127.0.0.1:45003
+1718280488520	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... ss" "--remote-debugging-port" "41863" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilesuSKvo"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: Unable to open a connection to the X server
+1718280496786	Marionette	INFO	Marionette enabled
+1718280498264	Marionette	INFO	Listening on port 46855
+Read port: 46855
+WebDriver BiDi listening on ws://127.0.0.1:41863
+1718280498494	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:41863/devtools/browser/a70d2f1b-9682-444c-93cb-a73851fb9137
+1718280504114	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
