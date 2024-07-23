@@ -4311,3 +4311,17 @@ WebDriver BiDi listening on ws://127.0.0.1:54793
 [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
 console.error: ({})
 DevTools listening on ws://127.0.0.1:54793/devtools/browser/a5bf2aa8-cdd0-48f0-b7bf-55d9def90792
+1721694040256	geckodriver	INFO	Listening on 127.0.0.1:55915
+1721694040760	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... ss" "--remote-debugging-port" "41237" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileFqqPpo"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: Unable to open a connection to the X server
+1721694041178	Marionette	INFO	Marionette enabled
+1721694041312	Marionette	INFO	Listening on port 38901
+WebDriver BiDi listening on ws://127.0.0.1:41237
+Read port: 38901
+1721694041516	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:41237/devtools/browser/5bfc8ceb-3c2b-49aa-8282-9dfcded777f0
